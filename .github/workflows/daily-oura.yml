@@ -2,11 +2,12 @@ name: Daily Oura Report
 
 on:
   workflow_dispatch:
-  schedule:
-    # GitHub cron uses UTC. Running 06:00-09:00 UTC covers 08:00, 09:00,
-    # and 10:00 Europe/Warsaw in both CET and CEST. The guard below skips
-    # the extra UTC run around DST.
-    - cron: "0 6,7,8,9 * * *"
+  # schedule disabled: every scheduled run has been failing with
+  # "Missing required environment variables" because the Oura/Telegram
+  # secrets aren't set in this repo. Re-add the cron block below once the
+  # secrets are configured (Settings -> Secrets and variables -> Actions).
+  # schedule:
+  #   - cron: "0 6,7,8,9 * * *"
 
 permissions:
   contents: write
